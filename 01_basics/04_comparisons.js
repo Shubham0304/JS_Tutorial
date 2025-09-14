@@ -14,7 +14,7 @@ console.log(null >= 0);
 
 
 /*
-Comparision with undefined:
+Comparison with undefined:
 This always returns false
 */ 
 

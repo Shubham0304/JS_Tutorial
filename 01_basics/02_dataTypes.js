@@ -1,6 +1,6 @@
 "use strict"; // treat all js code as newer JS version
 
-//alert (3 + 3); // we are using nod js not browser so this syntax would give error or node but
+//alert (3 + 3); // we are using node js not browser so this syntax would give error or node but
                 // will work fine on the browser
 // dataTypes:
 
