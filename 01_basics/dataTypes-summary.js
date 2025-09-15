@@ -45,3 +45,9 @@ console.log(typeof(myFunction));
 console.log(typeof(id));
 
 
+//////////Memory//////////////////////
+
+// Primitive Datatypes are stored on Stack
+// Non Prmitive on Heap
+
+
