@@ -113,7 +113,7 @@ console.log(1 + 2 + "2");
 
 
 /* Imp Rule: 
-For string with a nummber conversions If string is first,
+For string with a number conversions If string is first,
 then other number is also considered as string 
 But if it has number first then operation is done and then 
 converted to string

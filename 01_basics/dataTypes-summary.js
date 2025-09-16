@@ -48,6 +48,8 @@ console.log(typeof(id));
 //////////Memory//////////////////////
 
 // Primitive Datatypes are stored on Stack
-// Non Prmitive on Heap
+// Non Primitive on Heap
+//Important to note that for a non primitive datatype the variable name is 
+// stored on stack but the main variable is stored on heap
 
 
