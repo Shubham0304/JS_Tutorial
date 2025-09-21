@@ -62,6 +62,13 @@ console.log(jsUser3[mySum]);
 
 console.log(typeof(jsUser3[mySum]));
 
+
+const keys = Reflect.ownKeys(jsUser3);
+
+keys.forEach(key => {
+  console.log(key, "=>", typeof key);
+});
+
 // typeof Object.keys(obj) → always "object" (because arrays are objects).
 
 // Object.keys() → only string keys.
