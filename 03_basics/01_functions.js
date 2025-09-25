@@ -57,3 +57,43 @@ function loginUserMessage(username = "sam") {
 // The function takes the input to those as undefined
 console.log(loginUserMessage());
 
+
+
+//Multiple Values can be passed in a function using rest operator:
+// Which is ...
+function calculateCartPrice(...num1) {
+
+    return num1;
+
+
+}
+console.log(calculateCartPrice(200,400,500));
+
+
+const user = {
+
+    username: "Shubham",
+    price: 199
+};
+
+function handleObject(anyObject) {
+
+    console.log(`Username is ${anyObject.username} and price is ${anyObject.price}`);
+}
+
+// handleObject(user);
+handleObject({
+    username: "Sam",
+    price: 399
+}); 
+
+
+const myNewArray = [200, 400, 100, 600];
+
+function returnSecondValue(getArray) {
+
+    return getArray[1];
+
+}
+
+console.log(returnSecondValue(myNewArray));
