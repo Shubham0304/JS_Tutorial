@@ -1,0 +1,84 @@
+Javascript Execution Context:
+How does JS run a .js file (.js code):
+1. JS makes a Global EC (Execution context) and it is kept under the this variable(or we can say referred under this variable)
+2. The GEC of each runtime env is different, like its different for browser vs node vs Execution
+3. Other execution contexts are FEC (Function Execution Context) and Eval.
+4. The js code execution takes in two phases: 1. Memory Creation Phase (or Creation Phase) 2. Execution Phase
+5. MCP allocates the memory to all the variables and functions that are declared in the code
+6. EP executes the code/functions.
+
+
+# JavaScript Execution Context
+
+### How does JS run a `.js` file?
+
+1. **Global Execution Context (GEC)**
+
+   * Created when the `.js` file starts running.
+   * In **non-strict mode**, `this` inside GEC refers to the **global object** (`window` in browser, `global` in Node.js).
+   * In **strict mode**, `this` inside GEC is `undefined`.
+
+2. **Environment-specific GEC**
+
+   * Global object differs depending on runtime environment:
+
+     * Browser → `window`
+     * Node.js → `global`
+     * Deno → `Deno`
+
+3. **Types of Execution Contexts**
+
+   * **Global Execution Context (GEC)** → created once per program.
+   * **Function Execution Context (FEC)** → created whenever a function is invoked.
+   * **Eval Execution Context** → created when using `eval()` (rare and discouraged).
+
+4. **Execution Context Lifecycle (2 Phases)**
+
+   * **Memory Creation Phase (MCP / Creation Phase / Hoisting Phase)**
+
+     * Variables allocated memory and set to `undefined`.
+     * Function declarations stored entirely in memory.
+     * `this` binding is set.
+   * **Execution Phase (EP)**
+
+     * Code is executed line by line.
+     * Variable assignments happen.
+     * Function calls create new **FECs**, which are pushed onto the **Call Stack**.
+
+5. **Call Stack Behavior**
+
+   * JavaScript uses a **Call Stack** to manage execution contexts.
+   * **GEC is pushed first** and stays at the **bottom** of the stack until the program ends.
+   * Each function call creates a **new FEC**, pushed on top of the stack.
+   * When the function finishes, its FEC is popped off, and control returns to the caller.
+   * **GEC is destroyed only when the program finishes execution** (script ends or page closes).
+
+6. **Single-threaded Nature**
+
+   * JavaScript is **single-threaded** → only **one execution context runs at a time**.
+   * Async tasks are handled using the **Event Loop + Web APIs/Node APIs**, allowing concurrency without blocking.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. JS is single Threaded
