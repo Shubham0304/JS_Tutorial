@@ -20,3 +20,12 @@
 )("Shubham");
 
 // How does IIE prevents global scope pollution?
+// IIFEs prevent global scope pollution by immediately executing inside their own function scope, keeping internal variables/functions private and avoiding conflicts with other scripts.
+// var counter = 100; // global
+
+// (function() {
+//   var counter = 0;  // local to IIFE
+//   console.log("Inside IIFE:", counter);
+// })();
+
+// console.log("Outside IIFE:", counter);
