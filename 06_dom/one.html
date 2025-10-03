@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+
+    <title>Dom Learning</title>
+</head>
+<body>
+    <div class="bg-black">
+        <h1 id="title" class="heading">Dom Learning on Chai and Code
+            <span style="display: none;">Test Text</span>
+        </h1>
+        <h2 id="title" class="heading">Dom Learning on Chai and Code1
+            <span style="display: none;">Test Text</span>
+        </h2>        <h1 id="title" class="heading">Dom Learning on Chai and Code2
+            <span style="display: none;">Test Text</span>
+        </h2>        <h1 id="title" class="heading">Dom Learning on Chai and Code3
+            <span style="display: none;">Test Text</span>
+        </h2>        <h1 id="title" class="heading">Dom Learning on Chai and Code4
+            <span style="display: none;">Test Text</span>
+        </h2>        <h1 id="title" class="heading">Dom Learning on Chai and Code5
+            <span style="display: none;">Test Text</span>
+        </h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti molestiae explicabo delectus, corrupti tempore assumenda. Assumenda earum suscipit distinctio. Cumque, minima? Amet fuga perferendis quisquam suscipit dolore iste nobis laboriosam?</p>
+        <input type="password"></input>
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+
+        </ul>
+    </div>
+</body>
+</html>
+
+<!-- Difference between innerHtml, textContent and innerText:
+
+Ans | Property          | Returns/sets…                               | Includes hidden text? | Parses HTML? |
+| ----------------- | ------------------------------------------- | --------------------- | ------------ |
+| **`innerHTML`**   | HTML + text content                         | Yes                   | ✅ Yes        |
+| **`textContent`** | All text, raw                               | ✅ Yes                 | ❌ No         |
+| **`innerText`**   | Visible text (after CSS/layout rules apply) | ❌ No                  | ❌ No         | -->
+
+
+<!-- Difference between querySelector and querySelectorAll:
+
+| Feature     | `querySelector`                    | `querySelectorAll`                          |
+| ----------- | ---------------------------------- | ------------------------------------------- |
+| Returns     | First match only                   | All matches                                 |
+| Return type | Single **Element** or `null`       | **NodeList** (can be looped with `forEach`) |
+| Performance | Stops at first match               | Finds everything                            |
+| Use case    | When you need **just one element** | When you need **multiple elements**         | -->
+
+
+<!-- Difference between nodeList and Html Collecton and when do we get it  and how to convert it to different types?
+| Feature                 | **NodeList**                                                            | **HTMLCollection**                                                   |
+| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **What it contains**    | Nodes → can include **elements, text nodes, comments**                  | **Only element nodes** (no text/comments)                            |
+| **Returned by**         | `querySelectorAll()`, `childNodes`                                      | `getElementsByClassName()`, `getElementsByTagName()`, `.children`    |
+| **Static or Live**      | Usually **static** (does not auto-update), but `childNodes` can be live | Always **live** (updates automatically if DOM changes)               |
+| **Looping**             | ✅ Supports `.forEach()` in modern browsers                              | ❌ No `.forEach()` → must use `for`, `for...of`, or convert           |
+| **Array methods**       | Not a real array → need conversion for `map`, `filter`, etc.            | Same: needs conversion to real array                                 |
+| **Conversion to array** | `Array.from(nodeList)` or `[...nodeList]`                               | `Array.from(htmlCollection)` or `[...htmlCollection]`                |
+| **Access elements**     | `nodeList[0]`, `nodeList.item(0)`, loop with `forEach`                  | `collection[0]`, `collection.item(0)`, loop with `for` or `for...of` | -->
