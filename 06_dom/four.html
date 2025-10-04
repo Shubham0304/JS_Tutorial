@@ -8,6 +8,9 @@
 <body style="background-color: black; color: white;">
     <ul class="language">
         <li>JavaScript</li>
+        <li>C#</li>
+        <li>Java</li>
+
     </ul>
 </body>
 
@@ -19,8 +22,63 @@
         document.querySelector(".language").appendChild(li);
     }
 
+
+        function addOptiLanguage(langName) {
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector(".language").appendChild(li);
+    }
+
     addLanguage("Python");
     addLanguage("Typescript");
+    addOptiLanguage("GoLang");
+
+    //Edit :
+    const secondLang=document.querySelector("li:nth-child(2)");
+    const newLi = document.createElement("li");
+    newLi.textContent = "Mojo";
+    secondLang.replaceWith(newLi);
+
+    //Edit:
+    const firstLang = document.querySelector("li:nth-child(1)");
+    firstLang.outerHTML ='<li>TypeScript </li>'; 
+
+    //Delete:
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove(); 
 
 </script>
 </html>
+
+
+<!-- | Aspect                         | `innerHTML`                                                         | `createTextNode`                                       |
+| ------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------ |
+| **How it works**               | Parses the string as **HTML** and inserts nodes                     | Creates a **text node** and appends it directly        |
+| **Performance**                | Slower (parses HTML, extra overhead)                                | Faster (no parsing, direct text insertion)             |
+| **Security**                   | ⚠️ Risk of XSS (malicious HTML/JS gets executed if not sanitized)   | ✅ Safe (content is always plain text)                  |
+| **Use case**                   | When you **need to insert HTML markup** (e.g., `<b>JavaScript</b>`) | When you just need **plain text** (e.g., `JavaScript`) |
+| **Example Input: `<b>JS</b>`** | Renders as **JS** (bolded)                                          | Displays literally `<b>JS</b>`                         |
+| **Best Practice**              | Use only with **trusted content**                                   | Use whenever possible for **text-only content**        | -->
+
+<!-- 
+| Selector                 | Meaning                                                     | Example (with `<ul><li>...</li></ul>`)                      |
+| ------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `:first-child`           | Selects the **first child** of its parent                   | `li:first-child` → first `<li>`                             |
+| `:last-child`            | Selects the **last child** of its parent                    | `li:last-child` → last `<li>`                               |
+| `:nth-child(n)`          | Selects the **nth child** (1-based index)                   | `li:nth-child(2)` → 2nd child (if it’s `<li>`)              |
+| `:nth-last-child(n)`     | Selects the **nth child counting from the end**             | `li:nth-last-child(1)` → last child                         |
+| `:only-child`            | Selects an element that is the **only child** of its parent | `li:only-child` → works only if `<ul>` has exactly 1 `<li>` |
+| `:first-of-type`         | First element of its **type** among siblings                | `li:first-of-type` → first `<li>` (ignores other tags)      |
+| `:last-of-type`          | Last element of its **type** among siblings                 | `li:last-of-type` → last `<li>`                             |
+| `:nth-of-type(n)`        | nth element of its **type** among siblings                  | `li:nth-of-type(2)` → 2nd `<li>` regardless of other tags   |
+| `:nth-last-of-type(n)`   | nth element of its **type** counting from the end           | `li:nth-last-of-type(1)` → last `<li>`                      |
+| `:not(selector)`         | Selects elements that **do not match** the selector         | `li:not(:first-child)` → all `<li>` except the first        |
+| `:is(selector, …)`       | Matches if the element fits **any of the given selectors**  | `li:is(:first-child, :last-child)` → first and last `<li>`  |
+| `:has(selector)` (newer) | Selects elements that **contain** a matching child          | `ul:has(li:last-child)` → `<ul>` that has a last `<li>`     | -->
+
+
+
+    <!-- | Property    | What it includes                       | If you set it...                                          |
+| ----------- | -------------------------------------- | --------------------------------------------------------- |
+| `innerHTML` | Only the **inside content** (children) | Replaces **just the contents** of the element             |
+| `outerHTML` | The **element itself + its contents**  | Replaces the **whole element** (including the tag itself) | -->
