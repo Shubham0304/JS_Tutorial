@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur Code</title>
+</head>
+<body style="background-color: black; color: white;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector(".parent");
+    // console.log(parent);
+    // console.log(parent.children[1].innerHTML);
+    // for (let i= 0; i<parent.children.length; i++) {
+    //     console.log(parent.children[i].innerHTML);
+    // }
+
+    parent.children[1].style.color = "orange";
+    console.log(parent.firstElementChild);
+    console.log(parent.lastElementChild);
+
+    const dayOne = document.querySelector(".day");
+    console.log(dayOne);
+    console.log(dayOne.parentElement);
+    console.log(dayOne.nextElementSibling);
+    console.log(dayOne.nextSibling);
+
+    console.log("Nodes: ", parent.childNodes);
+
+// | **Code / Method**                              | **What it does**                                                     | **Return Type**               | **Notes / Example**                                        |
+// | ---------------------------------------------- | -------------------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------- |
+// | `element.parentElement`                        | Gets the parent **element node** of `element`                        | `Element` or `null`           | `dayOne.parentElement` → `<ul>` if `<li>` is inside `<ul>` |
+// | `element.nextElementSibling`                   | Gets the **next sibling element** (ignores text/comments)            | `Element` or `null`           | `dayOne.nextElementSibling` → `<li>` (the next `<li>`)     |
+// | `element.nextSibling`                          | Gets the **next sibling node** (can be text, comment, element)       | `Node` or `null`              | Often returns `#text` (whitespace)                         |
+// | `parent.childNodes`                            | Returns a **NodeList** of all child nodes (elements, text, comments) | `NodeList` (can include text) | `"Nodes: NodeList(…) [text, li, text, li]"`                |
+// | `parent.children`                              | Returns only **child elements** (ignores text/comments)              | `HTMLCollection`              | Example: `<li>, <li>`                                      |
+// | `element.firstChild`                           | Returns the **first child node** (could be text or element)          | `Node`                        | Often `#text` if there’s whitespace                        |
+// | `element.firstElementChild`                    | Returns the **first child element**                                  | `Element`                     | Example: first `<li>` inside `<ul>`                        |
+// | `element.lastChild`                            | Returns the **last child node**                                      | `Node`                        | Might be `#text` if whitespace at end                      |
+// | `element.lastElementChild`                     | Returns the **last child element**                                   | `Element`                     | Example: last `<li>` inside `<ul>`                         |
+// | `document.createElement("div")`                | Creates a new **empty element** (not yet in DOM)                     | `Element`                     | Must be appended later                                     |
+// | `document.createTextNode("Chai aur Code")`     | Creates a new **text node**                                          | `Text` node                   | Useful for safe text insertion                             |
+// | `parent.appendChild(node)`                     | Appends a node as the **last child**                                 | `Node`                        | `div.appendChild(addText)`                                 |
+// | `parent.insertBefore(newNode, referenceNode)`  | Inserts a node before another child                                  | `Node`                        | `ul.insertBefore(newLi, ul.firstChild)`                    |
+// | `element.remove()`                             | Removes the element from DOM                                         | `void`                        | `dayOne.remove()`                                          |
+// | `parent.removeChild(child)`                    | Removes a child node                                                 | Removed `Node`                | Older way                                                  |
+// | `element.replaceWith(newNode)`                 | Replaces the element with another                                    | `void`                        | `oldLi.replaceWith(newLi)`                                 |
+// | `element.cloneNode(true/false)`                | Copies an element (`true` = deep clone, with children)               | `Node`                        | `let copy = div.cloneNode(true)`                           |
+// | `element.setAttribute("attr", "value")`        | Sets an attribute                                                    | `void`                        | `div.setAttribute("id","box")`                             |
+// | `element.getAttribute("attr")`                 | Gets an attribute’s value                                            | `string` or `null`            | `div.getAttribute("class")`                                |
+// | `element.classList.add/remove/toggle/contains` | Manage CSS classes                                                   | `DOMTokenList`                | `div.classList.add("active")`                              |
+// | `element.style.property = value`               | Inline style modification                                            | `string`                      | `div.style.backgroundColor = "red"`                        |
+
+
+
+
+</script>
+</html>
