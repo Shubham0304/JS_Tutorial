@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2 id="images"></h2>
+    <div>
+        <ul></ul>
+
+    </div>
+</body>
+<script>
+    // All the events in JS run sequentially except some exceptions
+    
+    // Not recommended:
+    // document.getElementById("owl").oncick = function() {
+    //     alert("owl clicked");
+    // }
+
+    
+    // This was used earlier:
+    // attachEvent();
+    // jQuery : on
+
+    //  The event (e) object has many attributes, functions, data, some of them are like:
+    //  type, timestamp, defaultPrevented, target, toElemet, secElement, currentTarget
+    //  clientX, clientY, screenX, screenY
+    //  altKey, ctrlKey, shiftKey, keyCode 
+
+
+    //recommended : 
+    document.getElementById("owl").addEventListener("click", (e)=> {
+        consple.log(e);
+    }, false)
+
+    // The third parameter is about EventPropogation :
+    // Default is False which tells to follow Bubbling Event EventPropagation : inside to outside events
+    // When True which tells to follow Capturing Event : outside to Inside event
+    // “But when you want to stop the event from continuing in either bubbling or capturing, use e.stopPropagation().”
+
+//     | #      | Parent Capture? | Child Capture?     | `stopPropagation()` on Parent | `stopPropagation()` on Child | **Order of Events Fired** | **Explanation**                                                                                                                                      |
+// | ------ | --------------- | ------------------ | ----------------------------- | ---------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | **1**  | ❌ (bubbling)    | ❌ (bubbling)       | ❌                             | ❌                            | `child → parent`          | Normal bubbling: inner → outer                                                                                                                       |
+// | **2**  | ❌               | ❌                  | ❌                             | ✅                            | `child` only              | Child stops bubbling, parent never fires                                                                                                             |
+// | **3**  | ❌               | ❌                  | ✅                             | ❌                            | `child → parent`          | Parent runs after child, then stops further bubbling (to body/html)                                                                                  |
+// | **4**  | ✅ (capturing)   | ✅ (capturing)      | ❌                             | ❌                            | `parent → child`          | Normal capturing: outer → inner                                                                                                                      |
+// | **5**  | ✅               | ✅                  | ✅                             | ❌                            | `parent` only             | Parent stops event during capture → child never runs                                                                                                 |
+// | **6**  | ✅               | ✅                  | ❌                             | ✅                            | `parent → child`          | Parent runs first, then child; child stops it before bubbling starts                                                                                 |
+// | **7**  | ✅ (parent)      | ❌ (child bubbling) | ❌                             | ❌                            | `parent → child → parent` | Capturing parent runs, then target, then bubbling parent                                                                                             |
+// | **8**  | ✅               | ❌                  | ✅                             | ❌                            | `parent` only             | Parent capturing runs, stops event → child never fires                                                                                               |
+// | **9**  | ✅               | ❌                  | ❌                             | ✅                            | `parent → child`          | Parent capturing runs, then child bubbling runs, then stops (no bubbling parent again)                                                               |
+// | **10** | ❌               | ✅                  | ❌                             | ❌                            | `child → parent`          | Parent only has bubbling, child capturing runs at target (treated same as target phase); both fire                                                   |
+// | **11** | ❌               | ✅                  | ❌                             | ✅                            | `child → parent`          | Same as above — child stops propagation after running (no effect since bubbling parent still runs unless target phase stop matters in some browsers) |
+
+
+    // e.preventDefault() is used to prevent the default behaviour of that event
+
+// To get nested elements :
+
+// | Goal                             | Best Method                      | Example                                    |
+// | -------------------------------- | -------------------------------- | ------------------------------------------ |
+// | Get single nested element        | `querySelector()`                | `document.querySelector('#parent .child')` |
+// | Get element by ID inside another | `parent.querySelector('#inner')` |                                            |
+// | Get all nested elements          | `querySelectorAll()`             | `parent.querySelectorAll('*')`             |
+// | Get direct children only         | `children` property              | `parent.children`                          |
+
+
+
+</script>
+
+
+</html>
