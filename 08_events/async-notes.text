@@ -1,0 +1,127 @@
+the Task Queue (also called the Callback Queue or Macrotask Queue) is a key concept in how JavaScript handles asynchronous code.
+
+Task Queue (Callback Queue) in JavaScript – Notes
+1. Purpose
+
+Manages asynchronous callbacks in JavaScript.
+
+Ensures non-blocking execution in a single-threaded environment.
+
+2. How It Works
+
+JS executes synchronous code in the Call Stack.
+
+Async tasks (setTimeout, setInterval, I/O) are sent to Web APIs / Node APIs.
+
+Once ready, their callbacks are pushed into the Task Queue.
+
+The Event Loop checks:
+
+If Call Stack is empty, it moves the first task from the queue to the stack.
+
+Executes the callback.
+
+Repeats continuously.
+
+. Examples of Task Queue (Macrotasks)
+
+setTimeout()
+
+setInterval()
+
+setImmediate() (Node.js)
+
+I/O callbacks (Node.js)
+
+UI events (click, input)
+
+4. Microtask Queue vs Task Queue
+Queue Type	Examples	Priority	Execution Timing
+Microtask Queue	Promises, queueMicrotask(), MutationObserver	Higher	Runs immediately after current Call Stack finishes, before Task Queue
+Task Queue (Macrotask Queue)	setTimeout, setInterval, I/O, UI events	Lower	Runs after microtasks and current stack finish
+5. Example
+console.log("Start");
+
+setTimeout(() => console.log("Task Queue"), 0);
+
+Promise.resolve().then(() => console.log("Microtask"));
+
+console.log("End");
+
+
+Execution Order:
+
+Start → End → Microtask → Task Queue
+
+6. Key Points
+
+JS is single-threaded, so the Call Stack can only run one thing at a time.
+
+Task Queue ensures async tasks are executed later, without blocking.
+
+Event Loop continuously moves tasks from queues → Call Stack.
+
+Microtasks always run before macrotasks.
+
+       ┌─────────────────────┐
+       │      Call Stack     │
+       │ (Synchronous code) │
+       └─────────┬──────────┘
+                 │
+                 ▼
+       ┌─────────────────────┐
+       │     Web / Node APIs │
+       │ (setTimeout, fetch, │
+       │   I/O, DOM events) │
+       └─────────┬──────────┘
+                 │
+                 ▼
+       ┌─────────────────────┐
+       │     Task Queue       │  ← Macrotasks
+       │ (setTimeout, setInt, │
+       │ I/O callbacks, UI)  │
+       └─────────┬──────────┘
+                 │
+                 ▼
+       ┌─────────────────────┐
+       │  Microtask Queue    │  ← Higher priority
+       │ (Promises, Mutation │
+       │ Observers, queueMicrotask) │
+       └─────────┬──────────┘
+                 │
+                 ▼
+              🌀 Event Loop
+       (moves tasks from queues → Call Stack
+        when stack is empty, microtasks first)
+
+
+Execution Flow (Step-by-Step)
+
+JS runs synchronous code → Call Stack.
+
+Async tasks go to Web/Node APIs → when ready, callback goes to Task Queue.
+
+If Promises or microtasks → go to Microtask Queue.
+
+Event Loop:
+
+Checks if Call Stack is empty.
+
+Runs all microtasks first.
+
+Then runs first task from Task Queue.
+
+Repeat continuously until program ends.
+
+
+console.log("Start");
+
+setTimeout(() => console.log("Task Queue"), 0);
+
+Promise.resolve().then(() => console.log("Microtask"));
+
+console.log("End");
+
+Execution Order:
+
+Start → End → Microtask → Task Queue
