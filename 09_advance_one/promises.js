@@ -67,3 +67,59 @@ console.log(" User is : ",username);
 }).finally(()=> {
     console.log("The promise either resolve or rejected");
 })
+
+const promiseFive = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+
+        let error = false;
+        if (!true) {
+            resolve({username: "javascript", password: "123"});
+        }
+        else {
+            reject("Error : JS Went wrong");
+        }
+    }, 1000);
+});
+
+async function consumePromiseFive() {
+    try {
+            const response = await promiseFive
+            console.log(response);
+        } catch (Error) {
+            console.log(Error);
+        }
+    }
+consumePromiseFive();
+
+// Calling API using async await :
+async function getAllUsers() {
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        const data = await response.json();
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+getAllUsers();
+
+// Calling API using promise  :
+
+fetch("https://jsonplaceholder.typicode.com/users")
+.then((response) => {
+    return response.json
+})
+.then((data)=> {
+console.log(data);
+})
+.catch((e)=> {
+    console.log(e);
+})
+.finally(()=> {
+    console.log("Fetch either completeed or failed");
+})
+
+
+// Q. How to pass a ready made function in then
+    
+// Q. Difference between response.json and JSON.parse(response)
